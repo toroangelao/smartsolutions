@@ -10,6 +10,7 @@ import diaketas.ConexionBD;
 import diaketas.Modelo.ONG.ONG;
 import diaketas.Modelo.ONG.Voluntario;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -345,6 +346,16 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
 
     
     
+    public static ArrayList<Voluntario> obtenerVoluntarios()
+    {
+        
+        ArrayList<Voluntario> usuarios = new ArrayList<Voluntario>();
+        
+        usuarios = diaketas.diaketas.ong.buscarVoluntarios();
+        
+        return usuarios;
+        
+    }
   
     
     
