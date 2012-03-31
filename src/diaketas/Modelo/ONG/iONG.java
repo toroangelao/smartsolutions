@@ -54,8 +54,9 @@ public interface iONG {
     /**
      * Agrega un nuevo voluntario al sistema
      * @param nuevoVoluntario Voluntario a agregar
+     * @return Devuelve true si se ha realizado la accion correctamente
      */
-    public void agregarNuevoVoluntario(Voluntario nuevoVoluntario);
+    public boolean agregarNuevoVoluntario(Voluntario nuevoVoluntario);
 
     /**
      * Busca un familiar en el sistema con el nombre indicado y la fecha de nacimiento

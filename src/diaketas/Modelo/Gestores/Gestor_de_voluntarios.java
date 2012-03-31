@@ -151,7 +151,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
         Voluntario v = new Voluntario( DNI, nombre, apellidos, fechaNacim, ciudad, 1, null, email, telf, 
                                         nacionalidad, direccion, codPost, new Date(), obs );
         
-        diaketas.diaketas.ong.agregarNuevoVoluntario(v);
+        confirma = diaketas.diaketas.ong.agregarNuevoVoluntario(v);
        
         return confirma;
     
@@ -185,15 +185,14 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
             if(existe1)
             {
                 
-                ONG.gestorVoluntarios.eliminarVoluntario(DNI);
+                confirma = ONG.gestorVoluntarios.eliminarVoluntario(DNI);
                 
                 ONG.gestorHistoriales.RegistrarOperacion(voluntarioDNI, DNI, "Baja Voluntario");
                
             }
             
         }
-        
-        System.out.println("Exito:"+confirma+"\n");
+
         return confirma;
     
     }
@@ -206,7 +205,7 @@ public class Gestor_de_voluntarios implements iGestorVoluntarios {
      * @return Devuelve True o False si se ha realizado la operacion con exito o no
      */
     @Override
-    public  boolean eliminarVoluntario(String DNI)
+    public boolean eliminarVoluntario(String DNI)
     {
         boolean exito = false;
         //Obtenemos el voluntario

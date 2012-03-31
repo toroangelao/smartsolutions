@@ -373,11 +373,16 @@ public class ONG implements iONG{
      *  Anyade el nuevo voluntario a la BBDD
      * @param nuevoVoluntario Datos del voluntario a agregar
      */
-    public void agregarNuevoVoluntario(Voluntario nuevoVoluntario){
+    @Override
+    public boolean agregarNuevoVoluntario(Voluntario nuevoVoluntario){
+        
+        boolean exito = true;
+        
         con.conectarBD();
         /*Convertimos Date para trabajar*/
         java.sql.Timestamp fecha_Nacimiento = new java.sql.Timestamp(nuevoVoluntario.FechaNac.getTime());
         java.sql.Timestamp fecha_Inicio = new java.sql.Timestamp(nuevoVoluntario.Fecha_Inicio.getTime());
+        
         
          try {
             instruccion = (Statement) con.conexion().createStatement();
@@ -392,8 +397,14 @@ public class ONG implements iONG{
                     + nuevoVoluntario.Nacionalidad + "\",\"" + nuevoVoluntario.Domicilio + "\",\""  + nuevoVoluntario.Codigo_Postal + "\",\""   + fecha_Inicio + "\",\"" + nuevoVoluntario.Observaciones +"\")");           
          }
          /*Captura de errores*/
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e);}
+         catch(SQLException e){ 
+             System.out.println(e); 
+             exito = false;
+         }
+         catch(Exception e){ 
+             System.out.println(e);
+             exito = false;
+         }
          /*Desconexión de la BD*/
          finally {
             if (con.hayConexionBD()) {
@@ -403,6 +414,9 @@ public class ONG implements iONG{
                     Logger.getLogger(ONG.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }        
+        }      
+         
+        return exito; 
     }  
+    
 }

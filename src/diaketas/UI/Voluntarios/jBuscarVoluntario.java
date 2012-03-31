@@ -71,6 +71,11 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         jLabel2.setText("NIF");
 
         NIF.setColumns(9);
+        NIF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIFKeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +142,7 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
         {
 
             //Consulto los datos del voluntario introducido
-            Voluntario v = diaketas.diaketas.ong.gestorVoluntarios.consultarVoluntario(NIF.getText().toUpperCase());
+            Voluntario v = ONG.gestorVoluntarios.consultarVoluntario(NIF.getText().toUpperCase());
             
             if(v==null)
             {
@@ -171,16 +176,16 @@ public class jBuscarVoluntario extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    
-    
-    private void NIFKeyTyped(java.awt.event.KeyEvent evt) {                             
+
+    private void NIFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIFKeyTyped
         // TODO add your handling code here:
         
-        if (NIF.getText().length()>=9){
-            evt.consume();
-        }
-    }
+        if (NIF.getText().length()==9)
+            evt.consume();  
+    }//GEN-LAST:event_NIFKeyTyped
+    
+    
+    
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

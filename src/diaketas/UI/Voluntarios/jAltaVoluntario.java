@@ -149,6 +149,11 @@ public class jAltaVoluntario extends javax.swing.JPanel {
 
         NIF1.setBackground(new java.awt.Color(255, 255, 153));
         NIF1.setColumns(9);
+        NIF1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NIF1KeyTyped(evt);
+            }
+        });
 
         jLabel17.setText("DNI del voluntario actual");
 
@@ -498,11 +503,11 @@ public class jAltaVoluntario extends javax.swing.JPanel {
             {
 
                 //primero compruebo si el dni del voluntario actual existe en el sistema
-                boolean existe_vol = diaketas.diaketas.ong.gestorVoluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
+                boolean existe_vol = ONG.gestorVoluntarios.comprobarExistenciaVoluntario((String)NIF1.getText().toUpperCase());
 
                 if(existe_vol)
                 {
-                    exito = diaketas.diaketas.ong.gestorVoluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), telefonoPasado, (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
+                    exito = ONG.gestorVoluntarios.altaVoluntario( (String)NIF.getText().toUpperCase(), (String)Nombre.getText(), (String)Apellidos.getText(), Fecha_Nac, (String)Poblacion.getText(), (String)Email.getText(), telefonoPasado, (String)Nacionalidad.getText(), (String)Domicilio.getText(), Integer.parseInt(CodPost.getText()), (String)Obs.getText(),  (String)NIF1.getText().toUpperCase() );
                 }
                 else
                 {
@@ -615,6 +620,14 @@ public class jAltaVoluntario extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_CodPostKeyTyped
+
+    private void NIF1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF1KeyTyped
+        // TODO add your handling code here:
+        if (NIF1.getText().length()>=9){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_NIF1KeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
