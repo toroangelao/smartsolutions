@@ -148,6 +148,7 @@ public class jConsultarVoluntario extends javax.swing.JPanel {
         FechaInic.setText("Fecha inicio");
 
         Obs.setColumns(20);
+        Obs.setEditable(false);
         Obs.setRows(5);
         jScrollPane1.setViewportView(Obs);
 
